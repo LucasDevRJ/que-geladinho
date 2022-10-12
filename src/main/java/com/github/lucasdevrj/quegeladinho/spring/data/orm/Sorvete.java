@@ -17,7 +17,7 @@ public class Sorvete {
 	private Double litros;
 	private String marca;
 	private String categoria;
-	private String sabores;
+	private String sabor;
 	private Float preco;
 	
 	public String getNome() {
@@ -52,12 +52,12 @@ public class Sorvete {
 		this.categoria = categoria;
 	}
 	
-	public String getSabores() {
-		return sabores;
+	public void setSabor(String sabor) {
+		this.sabor = sabor;
 	}
 	
-	public void setSabores(String sabores) {
-		this.sabores = sabores;
+	public String getSabor() {
+		return sabor;
 	}
 	
 	public Float getPreco() {

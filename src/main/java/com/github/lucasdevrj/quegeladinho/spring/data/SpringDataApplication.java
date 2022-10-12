@@ -1,5 +1,7 @@
 package com.github.lucasdevrj.quegeladinho.spring.data;
 
+import java.util.Scanner;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,9 +24,17 @@ public class SpringDataApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Sorvete sorvete = new Sorvete();
-		sorvete.setNome("");
+		Scanner entrada = new Scanner(System.in);
 		
+		Sorvete sorvete = new Sorvete();
+		sorvete.setNome("Magnum");
+		sorvete.setCategoria("Picolé");
+		sorvete.setLitros(0.182);
+		sorvete.setPreco(8.00f);
+		sorvete.setMarca("Magnum");
+		sorvete.setSabor("Chocolate");
+		
+		sorveteRepository.save(sorvete);
 	}
 
 }
