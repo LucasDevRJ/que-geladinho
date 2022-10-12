@@ -32,4 +32,52 @@ public class Sorvete {
 	private Sabor sabor;
 	
 	private Float preco;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Double getLitros() {
+		return litros;
+	}
+
+	public void setLitros(Double litros) {
+		this.litros = litros;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Sabor getSabor() {
+		return sabor;
+	}
+
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
+	}
+
+	public Float getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Float preco) {
+		this.preco = preco;
+	}
 }
