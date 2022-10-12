@@ -78,6 +78,6 @@ public class Sorvete {
 	
 	@Override
 	public String toString() {
-		return "ID: " + this.id + "|Categoria: " + this.categoria + "|Marca: " + this.marca + "|Nome: " + this.nome + "|Preço: " + this.preco + "|Sabor: " + this.sabor;
+		return "ID: " + this.id + "|Categoria: " + this.categoria + "|Listros: " + this.litros + "|Marca: " + this.marca + "|Nome: " + this.nome + "|Preço: " + this.preco + "|Sabor: " + this.sabor;
 	}
 }

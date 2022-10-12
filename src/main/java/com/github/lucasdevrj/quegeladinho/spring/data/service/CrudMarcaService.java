@@ -1,30 +1,30 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.service;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
-import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteRepository;
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service
-public class CrudSorveteService {
+public class CrudMarcaService {
 
-	private final SorveteRepository sorveteRepository;
+	private final MarcaRepository marcaRepository;
 	private Boolean repeticao = true;
 
-	public CrudSorveteService(SorveteRepository sorveteRepository) {
-		this.sorveteRepository = sorveteRepository;
+	public CrudMarcaService(MarcaRepository marcaRepository) {
+		this.marcaRepository = marcaRepository;
 	}
 
 	public void exibeMenu(Scanner entrada) {
 		while (repeticao) {
-			System.out.println("------------------------------|CRUD SORVETE|------------------------------");
-			System.out.println("Opção 1 - Salvar Sorvete.");
-			System.out.println("Opção 2 - Atualizar Sorvete.");
-			System.out.println("Opção 3 - Deletar Sorvete.");
-			System.out.println("Opção 4 - Exibir Sorvetes.");
+			System.out.println("------------------------------|CRUD MARCA|------------------------------");
+			System.out.println("Opção 1 - Salvar Marca.");
+			System.out.println("Opção 2 - Atualizar Marca.");
+			System.out.println("Opção 3 - Deletar Marca.");
+			System.out.println("Opção 4 - Exibir Marcas.");
 			System.out.println("Ou qualquer número para voltar.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
@@ -59,13 +59,13 @@ public class CrudSorveteService {
 	public void deletar(Scanner entrada) {
 		System.out.print("Digite o ID que deseja deletar o sorvete: ");
 		Integer id = entrada.nextInt();
-		this.sorveteRepository.deleteById(id);
+		this.marcaRepository.deleteById(id);
 		
 		System.out.println("Sorvete deletado com sucesso!");
 	}
 	
 	public void exibir() {
-		Iterable<Sorvete> sorvetes = this.sorveteRepository.findAll();
+		Iterable<Marca> sorvetes = this.marcaRepository.findAll();
 		sorvetes.forEach(sorvete -> System.out.println(sorvete));
 	}
 
