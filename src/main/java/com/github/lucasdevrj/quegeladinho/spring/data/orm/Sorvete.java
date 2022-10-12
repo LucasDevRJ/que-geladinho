@@ -75,4 +75,9 @@ public class Sorvete {
 	public void setPreco(Float preco) {
 		this.preco = preco;
 	}
+	
+	@Override
+	public String toString() {
+		return "ID: " + this.id + "|Categoria: " + this.categoria + "|Marca: " + this.marca + "|Nome: " + this.nome + "|Preço: " + this.preco + "|Sabor: " + this.sabor;
+	}
 }

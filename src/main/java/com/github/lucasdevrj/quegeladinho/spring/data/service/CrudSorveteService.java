@@ -23,9 +23,8 @@ public class CrudSorveteService {
 			System.out.println("------------------------------|CRUD SORVETE|------------------------------");
 			System.out.println("Opção 1 - Salvar Sorvete.");
 			System.out.println("Opção 2 - Atualizar Sorvete.");
-			System.out.println("Opção 3 - Deletar um Sorvete.");
-			System.out.println("Opção 4 - Deletar todos os Sorvetes.");
-			System.out.println("Opção 5 - Exibir Sorvetes.");
+			System.out.println("Opção 3 - Deletar Sorvete.");
+			System.out.println("Opção 4 - Exibir Sorvetes.");
 			System.out.println("Ou qualquer número para voltar.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
@@ -45,8 +44,8 @@ public class CrudSorveteService {
 				deletar(entrada);
 			break;
 			
-			case 5:
-				exibir(entrada);
+			case 4:
+				exibir();
 			break;
 
 			default:
