@@ -30,8 +30,9 @@ public class SpringDataApplication implements CommandLineRunner {
 		
 		while (repeticao) {
 			System.out.println("------------------------------|MENU PRINCIPAL|------------------------------");
-			System.out.println("Opção 1 - Salvar Registro.");
+			System.out.println("Opção 1 - Acessar CRUD do Sorvete.");
 			System.out.println("Opção 2 - Sair.");
+			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
 			
 			try {
