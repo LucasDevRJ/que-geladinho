@@ -26,7 +26,6 @@ public class SpringDataApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception{
 		Scanner entrada = new Scanner(System.in);
-		int opcao = 0;
 		
 		while (repeticao) {
 			System.out.println("------------------------------|MENU PRINCIPAL|------------------------------");
@@ -36,7 +35,7 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.print("Digite a opção desejada: ");
 			
 			try {
-				opcao = entrada.nextInt();
+				int opcao = entrada.nextInt();
 				
 				if (opcao == 1) {
 					this.crudSorveteService.exibeMenu(entrada);

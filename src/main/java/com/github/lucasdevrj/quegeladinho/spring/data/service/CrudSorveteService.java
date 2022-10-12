@@ -12,27 +12,65 @@ import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteReposito
 public class CrudSorveteService {
 
 	private final SorveteRepository sorveteRepository;
+	private Boolean repeticao = true;
 
 	public CrudSorveteService(SorveteRepository sorveteRepository) {
 		this.sorveteRepository = sorveteRepository;
 	}
 
 	public void exibeMenu(Scanner entrada) {
-		int opcao = 0;
-
-		while (opcao == 0) {
+		while (repeticao) {
 			System.out.println("------------------------------|CRUD SORVETE|------------------------------");
-			System.out.println("Opção 1 - Salvar Registro.");
+			System.out.println("Opção 1 - Salvar Sorvete.");
+			System.out.println("Opção 2 - Atualizar Sorvete.");
+			System.out.println("Opção 3 - Deletar um Sorvete.");
+			System.out.println("Opção 4 - Deletar todos os Sorvetes.");
+			System.out.println("Opção 5 - Exibir Sorvetes.");
 			System.out.println("Ou qualquer número para voltar.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
 			
-			opcao = entrada.nextInt();
-			if (opcao == 1) {
+			int opcao = entrada.nextInt();
+			
+			switch (opcao) {
+			case 1:
 				salvar(entrada);
-			} 
+			break;
+			
+			case 2:
+				atualizar(entrada);
+			break;
+			
+			case 3:
+				deletar(entrada);
+			break;
+			
+			case 5:
+				exibir(entrada);
+			break;
+
+			default:
+				repeticao = false;
+			break;
+			}
 		}
 
+	}
+
+	public void deletar(Scanner entrada) {
+		System.out.println("Digite o ID que deseja deletar o sorvete: ");
+		Integer id = entrada.nextInt();
+		
+		Sorvete sorvete = new Sorvete();
+		sorvete.setId(id);
+		this.sorveteRepository.deleteById(id);
+		
+		System.out.println("Sorvete deletado com sucesso!");
+	}
+	
+	public void exibir() {
+		Iterable<Sorvete> sorvetes = this.sorveteRepository.findAll();
+		sorvetes.forEach(sorvete -> System.out.println(sorvete));
 	}
 
 	public void salvar(Scanner entrada) {
@@ -68,7 +106,7 @@ public class CrudSorveteService {
 	}
 	
 	public void atualizar(Scanner entrada) {
-		System.out.println("Digite o ID que deseja atualizar os dados: ");
+		System.out.println("Digite o ID que deseja atualizar o sorvete: ");
 		Integer id = entrada.nextInt();
 		
 		System.out.print("Digite o nome do sorvete: ");
