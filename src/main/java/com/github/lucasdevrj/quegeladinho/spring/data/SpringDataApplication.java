@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.SaborRepository;
@@ -31,7 +33,11 @@ public class SpringDataApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		Marca marca = new Marca();
+		marca.setNome("Magnum");
 		
+		Categoria categoria = new Categoria();
+		categoria.setNome("Massa");
 	}
 
 }
