@@ -13,4 +13,11 @@ public class CrudSorveteService {
 		this.sorveteRepository = sorveteRepository;
 	}
 	
+	public void inicial() {
+		
+	}
+	
+	public void salvar() {
+		
+	}
 }
