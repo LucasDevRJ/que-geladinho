@@ -20,4 +20,20 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria")
 	private List<Sorvete> sorvetes;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Sorvete> getSorvetes() {
+		return sorvetes;
+	}
+
+	public void setSorvetes(List<Sorvete> sorvetes) {
+		this.sorvetes = sorvetes;
+	}
 }
