@@ -1,7 +1,6 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.orm;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +27,9 @@ public class Sorvete {
 	@JoinColumn(name = "categoria_id", nullable = false)
 	private Categoria categoria;
 	
+	@OneToOne
+	@JoinColumn(name = "sabor_id", nullable = false)
 	private Sabor sabor;
+	
 	private Float preco;
 }
