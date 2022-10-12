@@ -1,21 +1,22 @@
 package com.github.lucasdevrj.quegeladinho.spring.data;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
-import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteRepository;
+import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSorveteService;
 
 @SpringBootApplication
-public class SpringDataApplication implements CommandLineRunner{
-	
-	private final SorveteRepository sorveteRepository;
-	
-	public SpringDataApplication(SorveteRepository sorveteRepository) {
-		this.sorveteRepository = sorveteRepository;
+public class SpringDataApplication implements CommandLineRunner {
+
+	private final CrudSorveteService crudSorveteService;
+	private Boolean repeticao = true;
+
+	public SpringDataApplication(CrudSorveteService crudSorveteService) {
+		this.crudSorveteService = crudSorveteService;
 	}
 
 	public static void main(String[] args) {
@@ -23,28 +24,35 @@ public class SpringDataApplication implements CommandLineRunner{
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) throws Exception{
 		Scanner entrada = new Scanner(System.in);
 		int opcao = 0;
 		
-		do {
-			
-			System.out.println("------------------------------|MENU SORVETE|------------------------------");
+		while (repeticao) {
+			System.out.println("------------------------------|MENU PRINCIPAL|------------------------------");
 			System.out.println("Opção 1 - Salvar Registro.");
-			System.out.println("Opção 2 - Sair.");			
+			System.out.println("Opção 2 - Sair.");
 			System.out.print("Digite a opção desejada: ");
-			opcao = entrada.nextInt();
-		} while (opcao != 2);
+			
+			try {
+				opcao = entrada.nextInt();
+				
+				if (opcao == 1) {
+					this.crudSorveteService.exibeMenu(entrada);
+				} else if (opcao == 2) {
+					System.out.println("Programa finalizado.");
+					this.repeticao = false;
+				} else {
+					System.out.println("Opção inválida!");
+				}
+			} catch (InputMismatchException erro) {
+				erro.printStackTrace();
+				erro.getMessage();
+				run(args);
+			}
 		
-		Sorvete sorvete = new Sorvete();
-		sorvete.setNome("Magnum");
-		sorvete.setCategoria("Picolé");
-		sorvete.setLitros(0.182);
-		sorvete.setPreco(8.00f);
-		sorvete.setMarca("Magnum");
-		sorvete.setSabor("Chocolate");
-		
-		sorveteRepository.save(sorvete);
+		}
+
 	}
 
 }
