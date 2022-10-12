@@ -32,12 +32,4 @@ public class Sorvete {
 	private Sabor sabor;
 	
 	private Float preco;
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public void setLitros(Double litros) {
-		this.litros = litros;
-	}
 }
