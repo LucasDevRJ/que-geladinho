@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
-import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service
@@ -57,11 +56,11 @@ public class CrudMarcaService {
 	}
 
 	public void deletar(Scanner entrada) {
-		System.out.print("Digite o ID que deseja deletar o sorvete: ");
+		System.out.print("Digite o ID que deseja deletar a marca: ");
 		Integer id = entrada.nextInt();
 		this.marcaRepository.deleteById(id);
 		
-		System.out.println("Sorvete deletado com sucesso!");
+		System.out.println("Marca deletada com sucesso!");
 	}
 	
 	public void exibir() {
@@ -70,70 +69,30 @@ public class CrudMarcaService {
 	}
 
 	public void salvar(Scanner entrada) {
-		System.out.print("Digite o nome do sorvete: ");
+		System.out.print("Digite o nome da marca: ");
 		String nome = entrada.next();
 
-		System.out.print("Digite a categoria do sorvete: ");
-		String categoria = entrada.next();
+		Marca marca = new Marca();
+		marca.setNome(nome);
+		
+		marcaRepository.save(marca);
 
-		System.out.print("Digite a quantidade (em litros) do sorvete: ");
-		Double litros = entrada.nextDouble();
-
-		System.out.print("Digite o preço do sorvete: ");
-		Float preco = entrada.nextFloat();
-
-		System.out.print("Digite a marca do sorvete: ");
-		String marca = entrada.next();
-
-		System.out.print("Digite o sabor do sorvete: ");
-		String sabor = entrada.next();
-
-		Sorvete sorvete = new Sorvete();
-		sorvete.setNome(nome);
-		sorvete.setCategoria(categoria);
-		sorvete.setLitros(litros);
-		sorvete.setPreco(preco);
-		sorvete.setMarca(marca);
-		sorvete.setSabor(sabor);
-
-		sorveteRepository.save(sorvete);
-
-		System.out.println("Sorvete salvo com sucesso!");
+		System.out.println("Marca salva com sucesso!");
 	}
 	
 	public void atualizar(Scanner entrada) {
-		System.out.println("Digite o ID que deseja atualizar o sorvete: ");
+		System.out.println("Digite o ID que deseja atualizar a marca: ");
 		Integer id = entrada.nextInt();
 		
-		System.out.print("Digite o nome do sorvete: ");
+		System.out.print("Digite o nome da marca: ");
 		String nome = entrada.next();
-
-		System.out.print("Digite a categoria do sorvete: ");
-		String categoria = entrada.next();
-
-		System.out.print("Digite a quantidade (em litros) do sorvete: ");
-		Double litros = entrada.nextDouble();
-
-		System.out.print("Digite o preço do sorvete: ");
-		Float preco = entrada.nextFloat();
-
-		System.out.print("Digite a marca do sorvete: ");
-		String marca = entrada.next();
-
-		System.out.print("Digite o sabor do sorvete: ");
-		String sabor = entrada.next();
 		
-		Sorvete sorvete = new Sorvete();
-		sorvete.setId(id);
-		sorvete.setNome(nome);
-		sorvete.setCategoria(categoria);
-		sorvete.setLitros(litros);
-		sorvete.setPreco(preco);
-		sorvete.setMarca(marca);
-		sorvete.setSabor(sabor);
+		Marca marca = new Marca();
+		marca.setId(id);
+		marca.setNome(nome);
 		
-		sorveteRepository.save(sorvete);
+		marcaRepository.save(marca);
 
-		System.out.println("Sorvete atualizado com sucesso!");
+		System.out.println("Marca atualizada com sucesso!");
 	}
 }
