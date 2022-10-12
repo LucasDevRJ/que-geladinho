@@ -7,16 +7,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudMarcaService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSorveteService;
 
 @SpringBootApplication
 public class SpringDataApplication implements CommandLineRunner {
 
 	private final CrudSorveteService crudSorveteService;
+	private final CrudMarcaService crudMarcaService;
 	private Boolean repeticao = true;
 
-	public SpringDataApplication(CrudSorveteService crudSorveteService) {
+	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService) {
 		this.crudSorveteService = crudSorveteService;
+		this.crudMarcaService = crudMarcaService;
 	}
 
 	public static void main(String[] args) {
@@ -30,29 +33,43 @@ public class SpringDataApplication implements CommandLineRunner {
 		while (repeticao) {
 			System.out.println("------------------------------|MENU PRINCIPAL|------------------------------");
 			System.out.println("Opção 1 - Acessar CRUD do Sorvete.");
-			System.out.println("Opção 2 - Sair.");
+			System.out.println("Opção 2 - Acessar CRUD da Marca.");
+			System.out.println("Opção 3 - Sair.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
 			
 			try {
 				int opcao = entrada.nextInt();
 				
-				if (opcao == 1) {
+				switch (opcao) {
+				case 1:
 					this.crudSorveteService.exibeMenu(entrada);
-				} else if (opcao == 2) {
-					System.out.println("Programa finalizado.");
-					this.repeticao = false;
-				} else {
+				break;
+				
+				case 2:
+					this.crudMarcaService.exibeMenu(entrada);
+				break;
+				
+				case 3:
+					finalizaPrograma();
+				break;
+
+				default:
 					System.out.println("Opção inválida!");
+				break;
 				}
 			} catch (InputMismatchException erro) {
 				erro.printStackTrace();
-				erro.getMessage();
 				run(args);
 			}
 		
 		}
 
+	}
+
+	public void finalizaPrograma() {
+		System.out.println("Programa finalizado.");
+		this.repeticao = false;
 	}
 
 }

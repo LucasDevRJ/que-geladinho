@@ -1,6 +1,5 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.service;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
