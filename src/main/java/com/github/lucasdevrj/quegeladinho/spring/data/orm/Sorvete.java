@@ -23,7 +23,11 @@ public class Sorvete {
 	@ManyToOne
 	@JoinColumn(name = "marca_id", nullable = false)
 	private Marca marca;
+	
+	@ManyToOne
+	@JoinColumn(name = "categoria_id", nullable = false)
 	private Categoria categoria;
+	
 	private Sabor sabor;
 	private Float preco;
 }
