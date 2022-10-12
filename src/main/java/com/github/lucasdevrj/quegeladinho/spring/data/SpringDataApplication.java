@@ -25,6 +25,16 @@ public class SpringDataApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		Scanner entrada = new Scanner(System.in);
+		int opcao = 0;
+		
+		do {
+			
+			System.out.println("------------------------------|MENU SORVETE|------------------------------");
+			System.out.println("Opção 1 - Salvar Registro.");
+			System.out.println("Opção 2 - Sair.");			
+			System.out.print("Digite a opção desejada: ");
+			opcao = entrada.nextInt();
+		} while (opcao != 2);
 		
 		Sorvete sorvete = new Sorvete();
 		sorvete.setNome("Magnum");
