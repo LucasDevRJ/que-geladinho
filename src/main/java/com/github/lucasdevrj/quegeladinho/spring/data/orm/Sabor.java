@@ -20,4 +20,20 @@ public class Sabor {
 	@OneToOne
 	@JoinColumn(name = "sorvete_id", nullable = false)
 	private Sorvete sorvete;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Sorvete getSorvete() {
+		return sorvete;
+	}
+
+	public void setSorvete(Sorvete sorvete) {
+		this.sorvete = sorvete;
+	}
 }
