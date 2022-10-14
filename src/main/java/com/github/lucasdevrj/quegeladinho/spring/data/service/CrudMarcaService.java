@@ -93,15 +93,20 @@ public class CrudMarcaService {
 		System.out.println("Digite o ID que deseja atualizar a marca: ");
 		Integer id = entrada.nextInt();
 		
-		System.out.print("Digite o nome da marca: ");
-		String nome = entrada.next();
-		
-		Marca marca = new Marca();
-		marca.setId(id);
-		marca.setNome(nome);
-		
-		marcaRepository.save(marca);
+		if (this.marcaRepository.existsById(id)) {
+			System.out.print("Digite o nome da marca: ");
+			String nome = entrada.next();
+			
+			Marca marca = new Marca();
+			marca.setId(id);
+			marca.setNome(nome);
+			
+			this.marcaRepository.save(marca);
 
-		System.out.println("Marca atualizada com sucesso!");
+			System.out.println("Marca atualizada com sucesso!");
+			
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 }
