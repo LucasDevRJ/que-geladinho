@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sabor;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service
@@ -68,8 +69,12 @@ public class CrudMarcaService {
 	}
 	
 	public void exibir() {
-		Iterable<Marca> marcas = this.marcaRepository.findAll();
-		marcas.forEach(marca -> System.out.println(marca));
+		if (this.marcaRepository.count() > 0) {
+			Iterable<Marca> sabores = this.marcaRepository.findAll();
+			sabores.forEach(sabor -> System.out.println(sabor));
+		} else {
+			System.out.println("Não existem marcas cadastrados!");
+		}
 	}
 
 	public void cadastrar(Scanner entrada) {
