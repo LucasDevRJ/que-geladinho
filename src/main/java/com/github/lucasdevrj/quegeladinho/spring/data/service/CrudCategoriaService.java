@@ -70,7 +70,7 @@ public class CrudCategoriaService {
 	}
 
 	public void cadastrar(Scanner entrada) {
-		System.out.print("Digite o nome da marca: ");
+		System.out.print("Digite o nome da categoria: ");
 		String nome = entrada.next();
 
 		Marca marca = new Marca();
