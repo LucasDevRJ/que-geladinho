@@ -58,9 +58,13 @@ public class CrudMarcaService {
 	public void deletar(Scanner entrada) {
 		System.out.print("Digite o ID que deseja deletar a marca: ");
 		Integer id = entrada.nextInt();
-		this.marcaRepository.deleteById(id);
 		
-		System.out.println("Marca deletada com sucesso!");
+		if (this.marcaRepository.existsById(id)) {
+			System.out.println("Marca deletada com sucesso!");
+			this.marcaRepository.deleteById(id);
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 	
 	public void exibir() {
