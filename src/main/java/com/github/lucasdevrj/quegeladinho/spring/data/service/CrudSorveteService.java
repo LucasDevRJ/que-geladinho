@@ -139,38 +139,45 @@ public class CrudSorveteService {
 		Integer id = entrada.nextInt();
 		
 		if (this.sorveteRepository.existsById(id)) {
-			System.out.print("Digite o nome do sorvete: ");
-			String nome = entrada.next();
+			try {
+				
+				System.out.print("Digite o nome do sorvete: ");
+				String nome = entrada.next();
+				
+				System.out.print("Digite a quantidade (em litros) do sorvete: ");
+				Double litros = entrada.nextDouble();
+				
+				System.out.print("Digite o preço do sorvete: ");
+				Float preco = entrada.nextFloat();
 
-			System.out.print("Digite a categoria do sorvete: ");
-			Integer categoriaId = entrada.nextInt();
+				System.out.print("Digite a categoria (ID) do sorvete: ");
+				Integer categoriaId = entrada.nextInt();
 
-			System.out.print("Digite a quantidade (em litros) do sorvete: ");
-			Double litros = entrada.nextDouble();
+				System.out.print("Digite a marca (ID) do sorvete: ");
+				Integer marcaId = entrada.nextInt();
 
-			System.out.print("Digite o preço do sorvete: ");
-			Float preco = entrada.nextFloat();
+				System.out.print("Digite o sabor (ID) do sorvete: ");
+				Integer saborId = entrada.nextInt();
+				
+				Sorvete sorvete = new Sorvete();
+				sorvete.setNome(nome);
+				Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
+				sorvete.setCategoria(categoria.get());
+				sorvete.setLitros(litros);
+				sorvete.setPreco(preco);
+				Optional<Marca> marca = this.marcaRepository.findById(marcaId);
+				sorvete.setMarca(marca.get());
+				Optional<Sabor> sabor = this.saborRepository.findById(saborId);
+				sorvete.setSabor(sabor.get());
 
-			System.out.print("Digite a marca do sorvete: ");
-			Integer marcaId = entrada.nextInt();
-
-			System.out.print("Digite o sabor do sorvete: ");
-			Integer saborId = entrada.nextInt();
-
-			Sorvete sorvete = new Sorvete();
-			sorvete.setNome(nome);
-			Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
-			sorvete.setCategoria(categoria.get());
-			sorvete.setLitros(litros);
-			sorvete.setPreco(preco);
-			Optional<Marca> marca = this.marcaRepository.findById(marcaId);
-			sorvete.setMarca(marca.get());
-			Optional<Sabor> sabor = this.saborRepository.findById(saborId);
-			sorvete.setSabor(sabor.get());
-
-			sorveteRepository.save(sorvete);
-			
-			System.out.println("Sorvete atualizado com sucesso!");
+				sorveteRepository.save(sorvete);
+				
+				System.out.println("Sorvete atualizado com sucesso!");
+				
+			} catch (NoSuchElementException | IllegalStateException erro) {
+				erro.printStackTrace();
+				atualizar(entrada);
+			}
 		} else {
 			System.out.println("ID inexistente!");
 		}
