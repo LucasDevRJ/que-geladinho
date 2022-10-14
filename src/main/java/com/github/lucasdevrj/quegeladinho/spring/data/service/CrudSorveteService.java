@@ -1,23 +1,36 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.service;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.SaborRepository;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteRepository;
 
 @Service
 public class CrudSorveteService {
 
 	private final SorveteRepository sorveteRepository;
-	private Boolean repeticao = true;
-
-	public CrudSorveteService(SorveteRepository sorveteRepository) {
+	private final CategoriaRepository categoriaRepository;
+	private final MarcaRepository marcaRepository;
+	private final SaborRepository saborRepository;
+	
+	public CrudSorveteService(SorveteRepository sorveteRepository, CategoriaRepository categoriaRepository,
+			MarcaRepository marcaRepository, SaborRepository saborRepository) {
 		this.sorveteRepository = sorveteRepository;
+		this.categoriaRepository = categoriaRepository;
+		this.marcaRepository = marcaRepository;
+		this.saborRepository = saborRepository;
 	}
 
+	private Boolean repeticao = true;
+
+	
 	public void exibeMenu(Scanner entrada) {
 		while (repeticao) {
 			System.out.println("------------------------------|CRUD SORVETE|------------------------------");
@@ -81,8 +94,8 @@ public class CrudSorveteService {
 		System.out.print("Digite o nome do sorvete: ");
 		String nome = entrada.next();
 
-		System.out.print("Digite a categoria do sorvete: ");
-		String categoria = entrada.next();
+		System.out.print(categoria.toString() + "\nDigite a categoria do sorvete: ");
+		Integer categoriaId = entrada.nextInt();
 
 		System.out.print("Digite a quantidade (em litros) do sorvete: ");
 		Double litros = entrada.nextDouble();
@@ -98,7 +111,8 @@ public class CrudSorveteService {
 
 		Sorvete sorvete = new Sorvete();
 		sorvete.setNome(nome);
-		sorvete.setCategoria(categoria);
+		Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
+		funcionario.setCargo(cargo.get());
 		sorvete.setLitros(litros);
 		sorvete.setPreco(preco);
 		sorvete.setMarca(marca);

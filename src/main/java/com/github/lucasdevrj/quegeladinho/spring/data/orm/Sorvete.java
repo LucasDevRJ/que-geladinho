@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,9 +17,16 @@ public class Sorvete {
 	private Integer id;
 	private String nome;
 	private Double litros;
-	private String marca;
-	private String categoria;
-	private String sabor;
+	
+	@ManyToOne
+	private Marca marca;
+	
+	@ManyToOne
+	private Categoria categoria;
+	
+	@OneToOne
+	private Sabor sabor;
+	
 	private Float preco;
 	
 	public Integer getId() {
@@ -44,30 +53,30 @@ public class Sorvete {
 		this.litros = litros;
 	}
 	
-	public String getMarca() {
+	public Marca getMarca() {
 		return marca;
 	}
-	
-	public void setMarca(String marca) {
+
+	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
-	
-	public String getCategoria() {
+
+	public Categoria getCategoria() {
 		return categoria;
 	}
-	
-	public void setCategoria(String categoria) {
+
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-	public void setSabor(String sabor) {
-		this.sabor = sabor;
-	}
-	
-	public String getSabor() {
+
+	public Sabor getSabor() {
 		return sabor;
 	}
-	
+
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
+	}
+
 	public Float getPreco() {
 		return preco;
 	}

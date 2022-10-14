@@ -34,6 +34,6 @@ public class Categoria {
 	
 	@Override
 	public String toString() {
-		return "ID: " + this.id + "|Nome: " + this.nome;
+		return "ID: " + this.id + " - Nome: " + this.nome;
 	}
 }
