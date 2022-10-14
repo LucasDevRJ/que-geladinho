@@ -82,17 +82,17 @@ public class CrudSaborService {
 	}
 	
 	public void atualizar(Scanner entrada) {
-		System.out.println("Digite o ID que deseja atualizar a categoria: ");
+		System.out.println("Digite o ID que deseja atualizar o sabor: ");
 		Integer id = entrada.nextInt();
 		
-		System.out.print("Digite o nome da categoria: ");
+		System.out.print("Digite o nome do sabor: ");
 		String nome = entrada.next();
 		
-		Categoria categoria = new Categoria();
-		categoria.setId(id);
-		categoria.setNome(nome);
+		Sabor sabor = new Sabor();
+		sabor.setId(id);
+		sabor.setNome(nome);
 		
-		this.categoriaRepository.save(categoria);
+		this.saborRepository.save(sabor);
 
 		System.out.println("Categoria atualizada com sucesso!");
 	}
