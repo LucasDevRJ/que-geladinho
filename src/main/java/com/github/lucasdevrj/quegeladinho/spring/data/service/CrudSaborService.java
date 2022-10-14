@@ -64,8 +64,12 @@ public class CrudSaborService {
 	}
 	
 	public void exibir() {
-		Iterable<Sabor> sabores = this.saborRepository.findAll();
-		sabores.forEach(sabor -> System.out.println(sabor));
+		if (this.saborRepository.count() > 0) {
+			Iterable<Sabor> sabores = this.saborRepository.findAll();
+			sabores.forEach(sabor -> System.out.println(sabor));
+		} else {
+			System.out.println("Não existem sabores cadastrados!");
+		}
 	}
 
 	public void cadastrar(Scanner entrada) {
