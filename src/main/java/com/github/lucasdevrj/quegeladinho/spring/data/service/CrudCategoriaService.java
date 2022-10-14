@@ -8,12 +8,12 @@ import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service
-public class CrudMarcaService {
+public class CrudCategoriaService {
 
 	private final MarcaRepository marcaRepository;
 	private Boolean repeticao = true;
 
-	public CrudMarcaService(MarcaRepository marcaRepository) {
+	public CrudCategoriaService(MarcaRepository marcaRepository) {
 		this.marcaRepository = marcaRepository;
 	}
 

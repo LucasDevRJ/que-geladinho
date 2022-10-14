@@ -20,7 +20,7 @@ public class CrudSorveteService {
 	public void exibeMenu(Scanner entrada) {
 		while (repeticao) {
 			System.out.println("------------------------------|CRUD SORVETE|------------------------------");
-			System.out.println("Opção 1 - Salvar Sorvete.");
+			System.out.println("Opção 1 - Cadastrar Sorvete.");
 			System.out.println("Opção 2 - Atualizar Sorvete.");
 			System.out.println("Opção 3 - Deletar Sorvete.");
 			System.out.println("Opção 4 - Exibir Sorvetes.");
@@ -32,7 +32,7 @@ public class CrudSorveteService {
 			
 			switch (opcao) {
 			case 1:
-				salvar(entrada);
+				cadastrar(entrada);
 			break;
 			
 			case 2:
@@ -68,7 +68,7 @@ public class CrudSorveteService {
 		sorvetes.forEach(sorvete -> System.out.println(sorvete));
 	}
 
-	public void salvar(Scanner entrada) {
+	public void cadastrar(Scanner entrada) {
 		System.out.print("Digite o nome do sorvete: ");
 		String nome = entrada.next();
 
