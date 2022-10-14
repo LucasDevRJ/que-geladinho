@@ -20,11 +20,11 @@ public class CrudSaborService {
 
 	public void exibeMenu(Scanner entrada) {
 		while (repeticao) {
-			System.out.println("------------------------------|CRUD CATEGORIA|------------------------------");
-			System.out.println("Opção 1 - Cadastrar Categoria.");
-			System.out.println("Opção 2 - Atualizar Categoria.");
-			System.out.println("Opção 3 - Deletar Categoria.");
-			System.out.println("Opção 4 - Exibir Categorias.");
+			System.out.println("------------------------------|CRUD SABOR|------------------------------");
+			System.out.println("Opção 1 - Cadastrar Sabor.");
+			System.out.println("Opção 2 - Atualizar Sabor.");
+			System.out.println("Opção 3 - Deletar Sabor.");
+			System.out.println("Opção 4 - Exibir Sabores.");
 			System.out.println("Ou qualquer número para voltar.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
