@@ -6,15 +6,16 @@ import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.SaborRepository;
 
 @Service
 public class CrudSaborService {
 
-	private final CategoriaRepository categoriaRepository;
+	private final SaborRepository saborRepository;
 	private Boolean repeticao = true;
 
-	public CrudSaborService(CategoriaRepository categoriaRepository) {
-		this.categoriaRepository = categoriaRepository;
+	public CrudSaborService(SaborRepository saborRepository) {
+		this.saborRepository = saborRepository;
 	}
 
 	public void exibeMenu(Scanner entrada) {
