@@ -57,11 +57,11 @@ public class CrudCategoriaService {
 	}
 
 	public void deletar(Scanner entrada) {
-		System.out.print("Digite o ID que deseja deletar a marca: ");
+		System.out.print("Digite o ID que deseja deletar a categoria: ");
 		Integer id = entrada.nextInt();
-		this.marcaRepository.deleteById(id);
+		this.categoriaRepository.deleteById(id);
 		
-		System.out.println("Marca deletada com sucesso!");
+		System.out.println("Categoria deletada com sucesso!");
 	}
 	
 	public void exibir() {
