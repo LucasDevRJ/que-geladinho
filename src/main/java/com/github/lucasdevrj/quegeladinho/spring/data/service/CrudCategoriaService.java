@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
-import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
 
 @Service
@@ -93,15 +92,20 @@ public class CrudCategoriaService {
 		System.out.println("Digite o ID que deseja atualizar a categoria: ");
 		Integer id = entrada.nextInt();
 		
-		System.out.print("Digite o nome da categoria: ");
-		String nome = entrada.next();
-		
-		Categoria categoria = new Categoria();
-		categoria.setId(id);
-		categoria.setNome(nome);
-		
-		this.categoriaRepository.save(categoria);
+		if (this.categoriaRepository.existsById(id)) {
+			System.out.print("Digite o nome da categoria: ");
+			String nome = entrada.next();
+			
+			Categoria categoria = new Categoria();
+			categoria.setId(id);
+			categoria.setNome(nome);
+			
+			this.categoriaRepository.save(categoria);
 
-		System.out.println("Categoria atualizada com sucesso!");
+			System.out.println("Categoria atualizada com sucesso!");
+			
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 }
