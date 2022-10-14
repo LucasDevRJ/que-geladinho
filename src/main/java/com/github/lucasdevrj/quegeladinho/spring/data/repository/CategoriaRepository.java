@@ -7,5 +7,5 @@ import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
 
 @Repository
 public interface CategoriaRepository extends CrudRepository<Categoria, Integer>{
-
+	
 }

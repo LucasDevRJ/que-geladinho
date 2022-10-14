@@ -1,11 +1,14 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sabor;
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
@@ -29,7 +32,6 @@ public class CrudSorveteService {
 	}
 
 	private Boolean repeticao = true;
-
 	
 	public void exibeMenu(Scanner entrada) {
 		while (repeticao) {
@@ -91,36 +93,45 @@ public class CrudSorveteService {
 	}
 
 	public void cadastrar(Scanner entrada) {
-		System.out.print("Digite o nome do sorvete: ");
-		String nome = entrada.next();
+		try {
+			
+			System.out.print("Digite o nome do sorvete: ");
+			String nome = entrada.next();
+			
+			System.out.print("Digite a quantidade (em litros) do sorvete: ");
+			Double litros = entrada.nextDouble();
+			
+			System.out.print("Digite o preço do sorvete: ");
+			Float preco = entrada.nextFloat();
 
-		System.out.print(this.categoriaRepository.getClass().toString() + "\nDigite a categoria do sorvete: ");
-		Integer categoriaId = entrada.nextInt();
+			System.out.print("Digite a categoria (ID) do sorvete: ");
+			Integer categoriaId = entrada.nextInt();
 
-		System.out.print("Digite a quantidade (em litros) do sorvete: ");
-		Double litros = entrada.nextDouble();
+			System.out.print("Digite a marca (ID) do sorvete: ");
+			Integer marcaId = entrada.nextInt();
 
-		System.out.print("Digite o preço do sorvete: ");
-		Float preco = entrada.nextFloat();
+			System.out.print("Digite o sabor (ID) do sorvete: ");
+			Integer saborId = entrada.nextInt();
+			
+			Sorvete sorvete = new Sorvete();
+			sorvete.setNome(nome);
+			Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
+			sorvete.setCategoria(categoria.get());
+			sorvete.setLitros(litros);
+			sorvete.setPreco(preco);
+			Optional<Marca> marca = this.marcaRepository.findById(marcaId);
+			sorvete.setMarca(marca.get());
+			Optional<Sabor> sabor = this.saborRepository.findById(saborId);
+			sorvete.setSabor(sabor.get());
 
-		System.out.print("Digite a marca do sorvete: ");
-		String marca = entrada.next();
-
-		System.out.print("Digite o sabor do sorvete: ");
-		String sabor = entrada.next();
-
-		Sorvete sorvete = new Sorvete();
-		sorvete.setNome(nome);
-		Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
-		sorvete.setCategoria(categoria.get());
-		sorvete.setLitros(litros);
-		sorvete.setPreco(preco);
-		sorvete.setMarca(marca);
-		sorvete.setSabor(sabor);
-
-		sorveteRepository.save(sorvete);
-
-		System.out.println("Sorvete salvo com sucesso!");
+			sorveteRepository.save(sorvete);
+			
+			System.out.println("Sorvete salvo com sucesso!");
+		} catch (NoSuchElementException | IllegalStateException erro) {
+			erro.printStackTrace();
+			cadastrar(entrada);
+		}
+		
 	}
 	
 	public void atualizar(Scanner entrada) {
@@ -132,7 +143,7 @@ public class CrudSorveteService {
 			String nome = entrada.next();
 
 			System.out.print("Digite a categoria do sorvete: ");
-			String categoria = entrada.next();
+			Integer categoriaId = entrada.nextInt();
 
 			System.out.print("Digite a quantidade (em litros) do sorvete: ");
 			Double litros = entrada.nextDouble();
@@ -141,22 +152,24 @@ public class CrudSorveteService {
 			Float preco = entrada.nextFloat();
 
 			System.out.print("Digite a marca do sorvete: ");
-			String marca = entrada.next();
+			Integer marcaId = entrada.nextInt();
 
 			System.out.print("Digite o sabor do sorvete: ");
-			String sabor = entrada.next();
-			
+			Integer saborId = entrada.nextInt();
+
 			Sorvete sorvete = new Sorvete();
-			sorvete.setId(id);
 			sorvete.setNome(nome);
-			sorvete.setCategoria(categoria);
+			Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
+			sorvete.setCategoria(categoria.get());
 			sorvete.setLitros(litros);
 			sorvete.setPreco(preco);
-			sorvete.setMarca(marca);
-			sorvete.setSabor(sabor);
-			
-			sorveteRepository.save(sorvete);
+			Optional<Marca> marca = this.marcaRepository.findById(marcaId);
+			sorvete.setMarca(marca.get());
+			Optional<Sabor> sabor = this.saborRepository.findById(saborId);
+			sorvete.setSabor(sabor.get());
 
+			sorveteRepository.save(sorvete);
+			
 			System.out.println("Sorvete atualizado com sucesso!");
 		} else {
 			System.out.println("ID inexistente!");
