@@ -37,7 +37,8 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.println("------------------------------|MENU PRINCIPAL|------------------------------");
 			System.out.println("Opção 1 - Acessar CRUD do Sorvete.");
 			System.out.println("Opção 2 - Acessar CRUD da Marca.");
-			System.out.println("Opção 3 - Sair.");
+			System.out.println("Opção 3 - Acessar CRUD da Categoria.");
+			System.out.println("Opção 4 - Sair.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
 			
@@ -54,6 +55,10 @@ public class SpringDataApplication implements CommandLineRunner {
 				break;
 				
 				case 3:
+					this.crudCategoriaService.exibeMenu(entrada);
+				break;
+				
+				case 4:
 					finalizaPrograma();
 				break;
 
