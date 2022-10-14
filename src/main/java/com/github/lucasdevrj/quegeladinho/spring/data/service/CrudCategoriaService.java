@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
-import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service
 public class CrudCategoriaService {
@@ -65,8 +65,8 @@ public class CrudCategoriaService {
 	}
 	
 	public void exibir() {
-		Iterable<Marca> sorvetes = this.marcaRepository.findAll();
-		sorvetes.forEach(sorvete -> System.out.println(sorvete));
+		Iterable<Categoria> categorias = this.categoriaRepository.findAll();
+		categorias.forEach(categoria -> System.out.println(categoria));
 	}
 
 	public void cadastrar(Scanner entrada) {
