@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteRepository;
 
@@ -68,8 +69,12 @@ public class CrudSorveteService {
 	}
 	
 	public void exibir() {
-		Iterable<Sorvete> sorvetes = this.sorveteRepository.findAll();
-		sorvetes.forEach(sorvete -> System.out.println(sorvete));
+		if (this.sorveteRepository.count() > 0) {
+			Iterable<Sorvete> sorvetes = this.sorveteRepository.findAll();
+			sorvetes.forEach(sorvete -> System.out.println(sorvete));
+		} else {
+			System.out.println("Não existem sorvetes cadastrados!");
+		}
 	}
 
 	public void cadastrar(Scanner entrada) {
