@@ -70,15 +70,15 @@ public class CrudSaborService {
 	}
 
 	public void cadastrar(Scanner entrada) {
-		System.out.print("Digite o nome da categoria: ");
+		System.out.print("Digite o nome do sabor: ");
 		String nome = entrada.next();
 
-		Categoria categoria = new Categoria();
-		categoria.setNome(nome);
+		Sabor sabor = new Sabor();
+		sabor.setNome(nome);
 		
-		this.categoriaRepository.save(categoria);
+		this.saborRepository.save(sabor);
 
-		System.out.println("Categoria salva com sucesso!");
+		System.out.println("Sabor salvo com sucesso!");
 	}
 	
 	public void atualizar(Scanner entrada) {
