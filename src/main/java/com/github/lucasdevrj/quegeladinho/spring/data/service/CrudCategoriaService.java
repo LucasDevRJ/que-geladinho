@@ -73,12 +73,12 @@ public class CrudCategoriaService {
 		System.out.print("Digite o nome da categoria: ");
 		String nome = entrada.next();
 
-		Marca marca = new Marca();
-		marca.setNome(nome);
+		Categoria categoria = new Categoria();
+		categoria.setNome(nome);
 		
-		marcaRepository.save(marca);
+		this.categoriaRepository.save(categoria);
 
-		System.out.println("Marca salva com sucesso!");
+		System.out.println("Categoria salva com sucesso!");
 	}
 	
 	public void atualizar(Scanner entrada) {
