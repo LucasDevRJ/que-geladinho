@@ -5,16 +5,17 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service
 public class CrudCategoriaService {
 
-	private final MarcaRepository marcaRepository;
+	private final CategoriaRepository categoriaRepository;
 	private Boolean repeticao = true;
 
-	public CrudCategoriaService(MarcaRepository marcaRepository) {
-		this.marcaRepository = marcaRepository;
+	public CrudCategoriaService(CategoriaRepository categoriaRepository) {
+		this.categoriaRepository = categoriaRepository;
 	}
 
 	public void exibeMenu(Scanner entrada) {
