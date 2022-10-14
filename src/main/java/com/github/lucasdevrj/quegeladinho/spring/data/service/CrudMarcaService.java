@@ -64,8 +64,8 @@ public class CrudMarcaService {
 	}
 	
 	public void exibir() {
-		Iterable<Marca> sorvetes = this.marcaRepository.findAll();
-		sorvetes.forEach(sorvete -> System.out.println(sorvete));
+		Iterable<Marca> marcas = this.marcaRepository.findAll();
+		marcas.forEach(marca -> System.out.println(marca));
 	}
 
 	public void cadastrar(Scanner entrada) {
