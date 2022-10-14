@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudCategoriaService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudMarcaService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSorveteService;
 
@@ -15,11 +16,13 @@ public class SpringDataApplication implements CommandLineRunner {
 
 	private final CrudSorveteService crudSorveteService;
 	private final CrudMarcaService crudMarcaService;
+	private final CrudCategoriaService crudCategoriaService;
 	private Boolean repeticao = true;
 
-	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService) {
+	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService, CrudCategoriaService crudCategoriaService) {
 		this.crudSorveteService = crudSorveteService;
 		this.crudMarcaService = crudMarcaService;
+		this.crudCategoriaService = crudCategoriaService;
 	}
 
 	public static void main(String[] args) {
