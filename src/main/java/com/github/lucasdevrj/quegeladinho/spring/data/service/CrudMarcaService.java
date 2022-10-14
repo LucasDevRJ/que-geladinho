@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
-import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sabor;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.MarcaRepository;
 
 @Service

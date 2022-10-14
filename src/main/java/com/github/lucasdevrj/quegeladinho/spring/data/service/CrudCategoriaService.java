@@ -58,9 +58,13 @@ public class CrudCategoriaService {
 	public void deletar(Scanner entrada) {
 		System.out.print("Digite o ID que deseja deletar a categoria: ");
 		Integer id = entrada.nextInt();
-		this.categoriaRepository.deleteById(id);
 		
-		System.out.println("Categoria deletada com sucesso!");
+		if (this.categoriaRepository.existsById(id)) {
+			System.out.println("Categoria deletada com sucesso!");
+			this.categoriaRepository.deleteById(id);
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 	
 	public void exibir() {
