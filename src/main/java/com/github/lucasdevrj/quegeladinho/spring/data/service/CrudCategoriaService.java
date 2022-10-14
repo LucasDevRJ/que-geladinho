@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Marca;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
 
 @Service
@@ -68,8 +69,12 @@ public class CrudCategoriaService {
 	}
 	
 	public void exibir() {
-		Iterable<Categoria> categorias = this.categoriaRepository.findAll();
-		categorias.forEach(categoria -> System.out.println(categoria));
+		if (this.categoriaRepository.count() > 0) {
+			Iterable<Categoria> categorias = this.categoriaRepository.findAll();
+			categorias.forEach(categoria -> System.out.println(categoria));
+		} else {
+			System.out.println("Não existem categorias cadastrados!");
+		}
 	}
 
 	public void cadastrar(Scanner entrada) {
