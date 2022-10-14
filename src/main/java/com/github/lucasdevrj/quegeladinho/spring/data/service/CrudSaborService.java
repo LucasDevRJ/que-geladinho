@@ -94,6 +94,6 @@ public class CrudSaborService {
 		
 		this.saborRepository.save(sabor);
 
-		System.out.println("Categoria atualizada com sucesso!");
+		System.out.println("Sabor atualizado com sucesso!");
 	}
 }
