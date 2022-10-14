@@ -113,35 +113,39 @@ public class CrudSorveteService {
 		System.out.println("Digite o ID que deseja atualizar o sorvete: ");
 		Integer id = entrada.nextInt();
 		
-		System.out.print("Digite o nome do sorvete: ");
-		String nome = entrada.next();
+		if (this.sorveteRepository.existsById(id)) {
+			System.out.print("Digite o nome do sorvete: ");
+			String nome = entrada.next();
 
-		System.out.print("Digite a categoria do sorvete: ");
-		String categoria = entrada.next();
+			System.out.print("Digite a categoria do sorvete: ");
+			String categoria = entrada.next();
 
-		System.out.print("Digite a quantidade (em litros) do sorvete: ");
-		Double litros = entrada.nextDouble();
+			System.out.print("Digite a quantidade (em litros) do sorvete: ");
+			Double litros = entrada.nextDouble();
 
-		System.out.print("Digite o preço do sorvete: ");
-		Float preco = entrada.nextFloat();
+			System.out.print("Digite o preço do sorvete: ");
+			Float preco = entrada.nextFloat();
 
-		System.out.print("Digite a marca do sorvete: ");
-		String marca = entrada.next();
+			System.out.print("Digite a marca do sorvete: ");
+			String marca = entrada.next();
 
-		System.out.print("Digite o sabor do sorvete: ");
-		String sabor = entrada.next();
-		
-		Sorvete sorvete = new Sorvete();
-		sorvete.setId(id);
-		sorvete.setNome(nome);
-		sorvete.setCategoria(categoria);
-		sorvete.setLitros(litros);
-		sorvete.setPreco(preco);
-		sorvete.setMarca(marca);
-		sorvete.setSabor(sabor);
-		
-		sorveteRepository.save(sorvete);
+			System.out.print("Digite o sabor do sorvete: ");
+			String sabor = entrada.next();
+			
+			Sorvete sorvete = new Sorvete();
+			sorvete.setId(id);
+			sorvete.setNome(nome);
+			sorvete.setCategoria(categoria);
+			sorvete.setLitros(litros);
+			sorvete.setPreco(preco);
+			sorvete.setMarca(marca);
+			sorvete.setSabor(sabor);
+			
+			sorveteRepository.save(sorvete);
 
-		System.out.println("Sorvete atualizado com sucesso!");
+			System.out.println("Sorvete atualizado com sucesso!");
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 }
