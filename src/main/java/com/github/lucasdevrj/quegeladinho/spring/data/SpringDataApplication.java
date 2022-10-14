@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudCategoriaService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudMarcaService;
+import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSaborService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSorveteService;
 
 @SpringBootApplication
@@ -17,12 +18,14 @@ public class SpringDataApplication implements CommandLineRunner {
 	private final CrudSorveteService crudSorveteService;
 	private final CrudMarcaService crudMarcaService;
 	private final CrudCategoriaService crudCategoriaService;
+	private final CrudSaborService crudSaborService;
 	private Boolean repeticao = true;
 
-	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService, CrudCategoriaService crudCategoriaService) {
+	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService, CrudCategoriaService crudCategoriaService, CrudSaborService crudSaborService) {
 		this.crudSorveteService = crudSorveteService;
 		this.crudMarcaService = crudMarcaService;
 		this.crudCategoriaService = crudCategoriaService;
+		this.crudSaborService = crudSaborService;
 	}
 
 	public static void main(String[] args) {
@@ -38,7 +41,8 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.println("Opção 1 - Acessar CRUD do Sorvete.");
 			System.out.println("Opção 2 - Acessar CRUD da Marca.");
 			System.out.println("Opção 3 - Acessar CRUD da Categoria.");
-			System.out.println("Opção 4 - Sair.");
+			System.out.println("Opção 4 - Acessar CRUD do Sabor.");
+			System.out.println("Opção 5 - Sair.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
 			
@@ -59,6 +63,10 @@ public class SpringDataApplication implements CommandLineRunner {
 				break;
 				
 				case 4:
+					this.crudSaborService.exibeMenu(entrada);
+				break;
+				
+				case 5:
 					finalizaPrograma();
 				break;
 

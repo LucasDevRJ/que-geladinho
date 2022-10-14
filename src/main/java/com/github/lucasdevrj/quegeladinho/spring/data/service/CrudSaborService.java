@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
-import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sabor;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.SaborRepository;
 
@@ -82,18 +81,23 @@ public class CrudSaborService {
 	}
 	
 	public void atualizar(Scanner entrada) {
-		System.out.println("Digite o ID que deseja atualizar o sabor: ");
+		System.out.print("Digite o ID que deseja atualizar o sabor: ");
 		Integer id = entrada.nextInt();
 		
-		System.out.print("Digite o nome do sabor: ");
-		String nome = entrada.next();
-		
-		Sabor sabor = new Sabor();
-		sabor.setId(id);
-		sabor.setNome(nome);
-		
-		this.saborRepository.save(sabor);
+		if (this.saborRepository.existsById(id)) {
+			System.out.print("Digite o nome do sabor: ");
+			String nome = entrada.next();
+			
+			Sabor sabor = new Sabor();
+			sabor.setId(id);
+			sabor.setNome(nome);
+			
+			this.saborRepository.save(sabor);
 
-		System.out.println("Sabor atualizado com sucesso!");
+			System.out.println("Sabor atualizado com sucesso!");
+			
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 }
