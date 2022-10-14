@@ -58,9 +58,14 @@ public class CrudSaborService {
 	public void deletar(Scanner entrada) {
 		System.out.print("Digite o ID que deseja deletar o sabor: ");
 		Integer id = entrada.nextInt();
-		this.saborRepository.deleteById(id);
 		
-		System.out.println("Sabor deletado com sucesso!");
+		if (this.saborRepository.existsById(id)) {
+			System.out.println("Sabor deletado com sucesso!");
+			this.saborRepository.deleteById(id);
+		} else {
+			System.out.println("ID inexistente!");
+		}
+		
 	}
 	
 	public void exibir() {
