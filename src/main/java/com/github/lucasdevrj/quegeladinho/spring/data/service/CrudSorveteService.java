@@ -58,9 +58,13 @@ public class CrudSorveteService {
 	public void deletar(Scanner entrada) {
 		System.out.print("Digite o ID que deseja deletar o sorvete: ");
 		Integer id = entrada.nextInt();
-		this.sorveteRepository.deleteById(id);
 		
-		System.out.println("Sorvete deletado com sucesso!");
+		if (this.sorveteRepository.existsById(id)) {
+			System.out.println("Sorvete deletado com sucesso!");
+			this.sorveteRepository.deleteById(id);
+		} else {
+			System.out.println("ID inexistente!");
+		}
 	}
 	
 	public void exibir() {
