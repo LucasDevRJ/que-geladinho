@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import com.github.lucasdevrj.quegeladinho.spring.data.orm.Categoria;
-import com.github.lucasdevrj.quegeladinho.spring.data.repository.CategoriaRepository;
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sabor;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.SaborRepository;
 
 @Service
@@ -57,16 +57,16 @@ public class CrudSaborService {
 	}
 
 	public void deletar(Scanner entrada) {
-		System.out.print("Digite o ID que deseja deletar a categoria: ");
+		System.out.print("Digite o ID que deseja deletar o sabor: ");
 		Integer id = entrada.nextInt();
-		this.categoriaRepository.deleteById(id);
+		this.saborRepository.deleteById(id);
 		
-		System.out.println("Categoria deletada com sucesso!");
+		System.out.println("Sabor deletado com sucesso!");
 	}
 	
 	public void exibir() {
-		Iterable<Categoria> categorias = this.categoriaRepository.findAll();
-		categorias.forEach(categoria -> System.out.println(categoria));
+		Iterable<Sabor> sabores = this.saborRepository.findAll();
+		sabores.forEach(sabor -> System.out.println(sabor));
 	}
 
 	public void cadastrar(Scanner entrada) {
