@@ -94,7 +94,7 @@ public class CrudSorveteService {
 		System.out.print("Digite o nome do sorvete: ");
 		String nome = entrada.next();
 
-		System.out.print(categoria.toString() + "\nDigite a categoria do sorvete: ");
+		System.out.print(this.categoriaRepository.getClass().toString() + "\nDigite a categoria do sorvete: ");
 		Integer categoriaId = entrada.nextInt();
 
 		System.out.print("Digite a quantidade (em litros) do sorvete: ");
@@ -112,7 +112,7 @@ public class CrudSorveteService {
 		Sorvete sorvete = new Sorvete();
 		sorvete.setNome(nome);
 		Optional<Categoria> categoria = this.categoriaRepository.findById(categoriaId);
-		funcionario.setCargo(cargo.get());
+		sorvete.setCategoria(categoria.get());
 		sorvete.setLitros(litros);
 		sorvete.setPreco(preco);
 		sorvete.setMarca(marca);
