@@ -11,6 +11,7 @@ import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudCategoriaServi
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudMarcaService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSaborService;
 import com.github.lucasdevrj.quegeladinho.spring.data.service.CrudSorveteService;
+import com.github.lucasdevrj.quegeladinho.spring.data.service.RelatorioService;
 
 @SpringBootApplication
 public class SpringDataApplication implements CommandLineRunner {
@@ -19,13 +20,15 @@ public class SpringDataApplication implements CommandLineRunner {
 	private final CrudMarcaService crudMarcaService;
 	private final CrudCategoriaService crudCategoriaService;
 	private final CrudSaborService crudSaborService;
+	private final RelatorioService relatorioService;
 	private Boolean repeticao = true;
 
-	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService, CrudCategoriaService crudCategoriaService, CrudSaborService crudSaborService) {
+	public SpringDataApplication(CrudSorveteService crudSorveteService, CrudMarcaService crudMarcaService, CrudCategoriaService crudCategoriaService, CrudSaborService crudSaborService, RelatorioService relatorioService) {
 		this.crudSorveteService = crudSorveteService;
 		this.crudMarcaService = crudMarcaService;
 		this.crudCategoriaService = crudCategoriaService;
 		this.crudSaborService = crudSaborService;
+		this.relatorioService = relatorioService;
 	}
 
 	public static void main(String[] args) {
@@ -42,7 +45,8 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.println("Opção 2 - Acessar CRUD da Marca.");
 			System.out.println("Opção 3 - Acessar CRUD da Categoria.");
 			System.out.println("Opção 4 - Acessar CRUD do Sabor.");
-			System.out.println("Opção 5 - Sair.");
+			System.out.println("Opção 5 - Relatório.");
+			System.out.println("Opção 6 - Sair.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
 			
@@ -67,6 +71,10 @@ public class SpringDataApplication implements CommandLineRunner {
 				break;
 				
 				case 5:
+					this.relatorioService.exibeMenu(entrada);
+				break;
+				
+				case 6:
 					finalizaPrograma();
 				break;
 

@@ -1,9 +1,11 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.orm.Sorvete;
 import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteRepository;
 
 @Service
@@ -28,7 +30,7 @@ public class RelatorioService {
 
 			switch (opcao) {
 			case 1:
-				cadastrar(entrada);
+				pesquisarSorveteNome(entrada);
 				break;
 
 			default:
@@ -38,7 +40,10 @@ public class RelatorioService {
 		}
 	}
 	
-	private void pesquisarSorveteNome() {
-		
+	private void pesquisarSorveteNome(Scanner entrada) {
+		System.out.println("Digite o nome do sorvete: ");
+		String nome = entrada.next();
+		List<Sorvete> lista = this.sorveteRepository.findByNome(nome);
+		lista.forEach(nomes -> System.out.println(nomes));
 	}
 }
