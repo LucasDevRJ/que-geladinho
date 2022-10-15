@@ -4,10 +4,17 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
+import com.github.lucasdevrj.quegeladinho.spring.data.repository.SorveteRepository;
+
 @Service
 public class RelatorioService {
 
 	private Boolean repeticao = true;
+	private final SorveteRepository sorveteRepository;
+
+	public RelatorioService(SorveteRepository sorveteRepository) {
+		this.sorveteRepository = sorveteRepository;
+	}
 
 	public void exibeMenu(Scanner entrada) {
 		while (repeticao) {
@@ -24,22 +31,14 @@ public class RelatorioService {
 				cadastrar(entrada);
 				break;
 
-			case 2:
-				atualizar(entrada);
-				break;
-
-			case 3:
-				deletar(entrada);
-				break;
-
-			case 4:
-				exibir();
-				break;
-
 			default:
 				repeticao = false;
 				break;
 			}
 		}
+	}
+	
+	private void pesquisarSorveteNome() {
+		
 	}
 }
