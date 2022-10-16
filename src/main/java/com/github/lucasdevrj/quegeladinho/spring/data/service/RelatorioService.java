@@ -1,6 +1,7 @@
 package com.github.lucasdevrj.quegeladinho.spring.data.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class RelatorioService {
 		while (repeticao) {
 			System.out.println("------------------------------|CRUD SORVETE|------------------------------");
 			System.out.println("Opção 1 - Pesquisar sorvete por nome.");
+			System.out.println("Opção 2 - Pesquisar sorvete por ID.");
 			System.out.println("Ou qualquer número para voltar.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
@@ -31,8 +33,12 @@ public class RelatorioService {
 			switch (opcao) {
 			case 1:
 				pesquisarSorveteNome(entrada);
-				break;
-
+			break;
+			
+			case 2:
+				pesquisarSorveteId(entrada);
+			break;
+			
 			default:
 				repeticao = false;
 				break;
@@ -41,9 +47,23 @@ public class RelatorioService {
 	}
 	
 	private void pesquisarSorveteNome(Scanner entrada) {
-		System.out.println("Digite o nome do sorvete: ");
+		System.out.print("Digite o nome do sorvete: ");
 		String nome = entrada.next();
+		
 		List<Sorvete> lista = this.sorveteRepository.findByNome(nome);
 		lista.forEach(nomes -> System.out.println(nomes));
 	}
+	
+	private void pesquisarSorveteId(Scanner entrada) {
+		System.out.print("Digite o ID do sorvete: ");
+		Integer id = entrada.nextInt();
+		
+		if (this.sorveteRepository.existsById(id)) {
+			Optional<Sorvete> sorvete = this.sorveteRepository.findById(id);
+			System.out.println(sorvete);
+		} else {
+			System.out.println("ID inexistente!");
+		}
+	}
+	
 }
