@@ -14,4 +14,6 @@ public interface SorveteRepository extends CrudRepository<Sorvete, Integer>{
 	List<Sorvete> findByNome(String nome);
 	
 	Optional<Sorvete> findById(Integer id);
+	
+	List<Sorvete> findByPrecoLessThanEqual(Float preco);
 }
