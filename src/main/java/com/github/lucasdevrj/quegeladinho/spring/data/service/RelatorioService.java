@@ -25,6 +25,7 @@ public class RelatorioService {
 			System.out.println("Opção 1 - Pesquisar sorvete por nome.");
 			System.out.println("Opção 2 - Pesquisar sorvete por ID.");
 			System.out.println("Opção 3 - Pesquisar sorvete pelo preço.");
+			System.out.println("Opção 4 - Pesquisar sorvete pelo sabor.");
 			System.out.println("Ou qualquer número para voltar.");
 			System.out.println("----------------------------------------------------------------------------");
 			System.out.print("Digite a opção desejada: ");
@@ -42,6 +43,10 @@ public class RelatorioService {
 			
 			case 3:
 				pesquisarSorveteMenorIgualPreco(entrada);
+			break;
+			
+			case 4:
+				pesquisarSorveteSabor(entrada);
 			break;
 			
 			default:
@@ -76,6 +81,14 @@ public class RelatorioService {
 		Float preco = entrada.nextFloat();
 		
 		List<Sorvete> lista = this.sorveteRepository.findByPrecoLessThanEqual(preco);
+		lista.forEach(nomes -> System.out.println(nomes));
+	}
+	
+	private void pesquisarSorveteSabor(Scanner entrada) {
+		System.out.print("Digite o sabor do sorvete: ");
+		String sabor = entrada.next();
+		
+		List<Sorvete> lista = this.sorveteRepository.findBySabor(sabor);
 		lista.forEach(nomes -> System.out.println(nomes));
 	}
 	
