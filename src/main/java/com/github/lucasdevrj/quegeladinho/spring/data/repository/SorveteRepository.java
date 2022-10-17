@@ -17,6 +17,9 @@ public interface SorveteRepository extends CrudRepository<Sorvete, Integer>{
 	@Query("SELECT s FROM Sorvete s WHERE s.sabor.nome = :sabor")
 	List<Sorvete> findBySabor(String sabor);
 	
+	@Query("SELECT s FROM Sorvete s WHERE s.categoria.nome = :categoria")
+	List<Sorvete> findByCategoria(String categoria);
+	
 	Optional<Sorvete> findById(Integer id);
 	
 	List<Sorvete> findByPrecoLessThanEqual(Float preco);
